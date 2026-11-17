@@ -1,0 +1,9 @@
+.env*
+node_modules/
+.vercel/
+test-output/
+evidence/
+browser-extension/
+tests/
+tools/
+*.md

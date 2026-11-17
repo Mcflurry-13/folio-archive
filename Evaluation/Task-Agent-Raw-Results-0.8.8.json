@@ -1,0 +1,1135 @@
+{
+  "version": "folio-kb-0.8.8",
+  "base": "http://127.0.0.1:5180/",
+  "library": "tools/fixtures/eval-library.json",
+  "items": 12,
+  "ranAt": "2026-11-17T19:42:11.082Z",
+  "runs": [
+    {
+      "n": 1,
+      "question": "帮我做个人网站",
+      "plan": {
+        "status": "ready",
+        "depth": "explore",
+        "question": "",
+        "goal": "帮你做个人网站",
+        "outputKind": "directions",
+        "anchorTerms": [],
+        "questions": [
+          "个人网站 的结构与内容规划",
+          "个人网站 首页 导航 关于我 项目 联系方式 示例",
+          "个人网站 视觉风格 与版式参考",
+          "个人网站 制作工具 与搭建流程"
+        ],
+        "topicScope": {
+          "mode": "unrestricted",
+          "names": []
+        },
+        "promptVersion": "folio-kb-0.8.8",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "usage": {
+          "input_tokens": 1289,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 144,
+          "output_tokens_details": {
+            "reasoning_tokens": 48
+          },
+          "total_tokens": 1433
+        }
+      },
+      "stages": {
+        "searched": [
+          "preview-5",
+          "preview-6",
+          "preview-1",
+          "preview-2"
+        ],
+        "reviewed": [
+          "preview-5",
+          "preview-6",
+          "preview-1",
+          "preview-2"
+        ]
+      },
+      "result": {
+        "status": "ready",
+        "outputKind": "directions",
+        "question": "",
+        "summary": "我给你三条可选路线，分别对应结构、视觉和技术实现。",
+        "plan": [
+          "先选一条路线：结构、视觉或技术。",
+          "如果你选结构，我继续帮你细化栏目和文案。",
+          "如果你选视觉或技术，我继续拆成配色、组件或上线步骤。"
+        ],
+        "missing": [],
+        "recommendations": [
+          {
+            "title": "先定内容结构",
+            "advice": "借用作品集式的信息节奏来规划首页和项目页。",
+            "tradeoff": "",
+            "evidence": [
+              {
+                "id": "preview-5",
+                "blockId": "preview-5:source:0",
+                "kind": "source",
+                "quote": "整理了十二个让作品集更耐看的排版细节：一、每屏只讲一件事；二、统一 8pt 栅格；三、标题与正文字号比至少 1.6；四、图片圆角统一；五、项目封面用同一种构图；六、案例开头先给结论；七、过程图少而精。其余细节见图。",
+                "topics": [
+                  "视觉素材"
+                ],
+                "evidenceId": "E0",
+                "use": "可直接用来规划个人网站的信息架构与页面节奏，比如首页每屏只放一件事、项目封面风格统一、案例开头先给结论。",
+                "limitation": "偏作品集排版，不是完整站点结构模板"
+              }
+            ]
+          },
+          {
+            "title": "先定视觉风格",
+            "advice": "把配色原则先落到背景、按钮和文字对比上。",
+            "tradeoff": "",
+            "evidence": [
+              {
+                "id": "preview-6",
+                "blockId": "preview-6:source:0",
+                "kind": "source",
+                "quote": "Collected palettes with low saturation that avoid looking cold. The trick is to shift neutrals slightly toward yellow or red, keep one mid-tone accent, and reserve pure white for the largest surface only. Includes hex values for six palettes and notes about contrast on text.",
+                "topics": [
+                  "视觉素材"
+                ],
+                "evidenceId": "E1",
+                "use": "可用来定个人网站的配色方向，提供低饱和但不冷的配色思路，并提醒主色、留白和文字对比的处理。",
+                "limitation": "只有配色原则，没有具体网站组件方案"
+              }
+            ]
+          },
+          {
+            "title": "先定实现方式",
+            "advice": "借用首屏制作、移动端降级和上线优化来安排技术路线。",
+            "tradeoff": "",
+            "evidence": [
+              {
+                "id": "preview-1",
+                "blockId": "preview-1:source:0",
+                "kind": "source",
+                "quote": "这篇记录了我用 Three.js 和 Blender 做个人网站首页的全过程。先在 Blender 里做低模场景并烘焙光照贴图，再导出 glTF，用 React Three Fiber 加载。滚动驱动相机路径，注意移动端降级到静态图。最后部署到 Vercel，并用 Draco 压缩把模型从 12MB 降到 1.4MB。",
+                "topics": [
+                  "网站制作"
+                ],
+                "evidenceId": "E2",
+                "use": "可参考部署与性能优化流程，比如 Vercel 部署和 Draco 压缩，适合做个人网站上线方案。",
+                "limitation": "偏后端部署与资源优化，缺少视觉与内容结构"
+              }
+            ]
+          }
+        ],
+        "draft": "先定内容结构\n把首页拆成“关于我—项目—联系”三段，每屏只讲一件事；项目页统一封面构图，案例开头先给结论，过程图少而精。适合你先把内容讲清楚，再补细节。\n\n先定视觉风格\n用低饱和配色做整体气质，避免太冷；保留一个中间色作为强调，纯白只留给最大面积的留白。适合你先统一网站观感，再去填内容。\n\n先定实现方式\n如果你想让首页更有记忆点，可以先做 Three.js + Blender 的首屏视觉，再把移动端降级成静态图；发布时走 Vercel，并用 Draco 压缩模型。适合你先把站点跑起来。",
+        "nextStep": "先选一条路线：结构、视觉或技术。",
+        "borrowed": [
+          {
+            "text": "Vercel，并用 Draco 压缩",
+            "id": "preview-1"
+          }
+        ],
+        "quality": {
+          "reviewed": true,
+          "repaired": true,
+          "audits": [
+            {
+              "issues": [
+                "第三条“实现方式”把 preview-2 的“JSON 管理、延迟加载”混进了 preview-1 的引用里；这段现在只标了 preview-1，需删掉这两个未被该来源支持的细节，或改用真正相关的 sourceId。"
+              ],
+              "proposal": {
+                "status": "ready",
+                "outputKind": "directions",
+                "question": "你想先做哪一版个人网站：内容结构、视觉风格，还是技术搭建？",
+                "summary": "我先给你三条可直接选的个人网站路线：结构、视觉和搭建。",
+                "sections": [
+                  {
+                    "heading": "先定首页结构",
+                    "text": "把首页拆成“关于我—项目—联系”三段，每屏只讲一件事；项目页则用统一封面和开头结论，过程图少而精。这个方向适合你想先把网站内容讲清楚，再补细节的情况。",
+                    "sourceId": "preview-5",
+                    "use": "借用作品集式的信息节奏来规划首页和项目页。"
+                  },
+                  {
+                    "heading": "先定视觉风格",
+                    "text": "用低饱和配色做整体气质，避免太冷；中间保留一个强调色，白色只留给最大面积的留白。这个方向适合你想先把网站看起来更统一，再去填内容。",
+                    "sourceId": "preview-6",
+                    "use": "把配色原则先定下来，再统一到按钮、背景和文字对比。"
+                  },
+                  {
+                    "heading": "先定实现方式",
+                    "text": "如果你想做更有记忆点的首页，可以用 Three.js 做首屏视觉，再把移动端降级为静态图；内容模块则可用 JSON 管理并延迟加载，发布时部署到 Vercel。这个方向适合你想先把站点跑起来。",
+                    "sourceId": "preview-1",
+                    "use": "借用部署与性能流程来安排技术实现。"
+                  }
+                ],
+                "userClaims": [],
+                "plan": [
+                  "先选一条路线：结构、视觉或技术实现。",
+                  "如果你选结构，我继续帮你写首页栏目和文案。",
+                  "如果你选视觉或技术，我继续细化成配色/组件/上线步骤。"
+                ],
+                "missing": []
+              },
+              "model": "gpt-5.4-mini-2026-03-17",
+              "usage": {
+                "input_tokens": 2080,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cache_write_tokens_details": {
+                    "ttl_12h_tokens": 0,
+                    "ttl_30m_tokens": 0
+                  },
+                  "cached_tokens": 0
+                },
+                "output_tokens": 1639,
+                "output_tokens_details": {
+                  "reasoning_tokens": 1552
+                },
+                "total_tokens": 3719
+              }
+            },
+            {
+              "issues": [],
+              "proposal": {
+                "status": "ready",
+                "outputKind": "directions",
+                "question": "你想先做哪一版个人网站：结构、视觉，还是技术实现？",
+                "summary": "我给你三条可选路线，分别对应结构、视觉和技术实现。",
+                "plan": [
+                  "先选一条路线：结构、视觉或技术。",
+                  "如果你选结构，我继续帮你细化栏目和文案。",
+                  "如果你选视觉或技术，我继续拆成配色、组件或上线步骤。"
+                ],
+                "missing": [],
+                "recommendations": [
+                  {
+                    "title": "先定内容结构",
+                    "advice": "借用作品集式的信息节奏来规划首页和项目页。",
+                    "tradeoff": "",
+                    "evidence": [
+                      {
+                        "id": "preview-5",
+                        "blockId": "preview-5:source:0",
+                        "kind": "source",
+                        "quote": "整理了十二个让作品集更耐看的排版细节：一、每屏只讲一件事；二、统一 8pt 栅格；三、标题与正文字号比至少 1.6；四、图片圆角统一；五、项目封面用同一种构图；六、案例开头先给结论；七、过程图少而精。其余细节见图。",
+                        "topics": [
+                          "视觉素材"
+                        ],
+                        "evidenceId": "E0",
+                        "use": "可直接用来规划个人网站的信息架构与页面节奏，比如首页每屏只放一件事、项目封面风格统一、案例开头先给结论。",
+                        "limitation": "偏作品集排版，不是完整站点结构模板"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "先定视觉风格",
+                    "advice": "把配色原则先落到背景、按钮和文字对比上。",
+                    "tradeoff": "",
+                    "evidence": [
+                      {
+                        "id": "preview-6",
+                        "blockId": "preview-6:source:0",
+                        "kind": "source",
+                        "quote": "Collected palettes with low saturation that avoid looking cold. The trick is to shift neutrals slightly toward yellow or red, keep one mid-tone accent, and reserve pure white for the largest surface only. Includes hex values for six palettes and notes about contrast on text.",
+                        "topics": [
+                          "视觉素材"
+                        ],
+                        "evidenceId": "E1",
+                        "use": "可用来定个人网站的配色方向，提供低饱和但不冷的配色思路，并提醒主色、留白和文字对比的处理。",
+                        "limitation": "只有配色原则，没有具体网站组件方案"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "先定实现方式",
+                    "advice": "借用首屏制作、移动端降级和上线优化来安排技术路线。",
+                    "tradeoff": "",
+                    "evidence": [
+                      {
+                        "id": "preview-1",
+                        "blockId": "preview-1:source:0",
+                        "kind": "source",
+                        "quote": "这篇记录了我用 Three.js 和 Blender 做个人网站首页的全过程。先在 Blender 里做低模场景并烘焙光照贴图，再导出 glTF，用 React Three Fiber 加载。滚动驱动相机路径，注意移动端降级到静态图。最后部署到 Vercel，并用 Draco 压缩把模型从 12MB 降到 1.4MB。",
+                        "topics": [
+                          "网站制作"
+                        ],
+                        "evidenceId": "E2",
+                        "use": "可参考部署与性能优化流程，比如 Vercel 部署和 Draco 压缩，适合做个人网站上线方案。",
+                        "limitation": "偏后端部署与资源优化，缺少视觉与内容结构"
+                      }
+                    ]
+                  }
+                ],
+                "draft": "先定内容结构\n把首页拆成“关于我—项目—联系”三段，每屏只讲一件事；项目页统一封面构图，案例开头先给结论，过程图少而精。适合你先把内容讲清楚，再补细节。\n\n先定视觉风格\n用低饱和配色做整体气质，避免太冷；保留一个中间色作为强调，纯白只留给最大面积的留白。适合你先统一网站观感，再去填内容。\n\n先定实现方式\n如果你想让首页更有记忆点，可以先做 Three.js + Blender 的首屏视觉，再把移动端降级成静态图；发布时走 Vercel，并用 Draco 压缩模型。适合你先把站点跑起来。",
+                "nextStep": "先选一条路线：结构、视觉或技术。"
+              },
+              "model": "gpt-5.4-mini-2026-03-17",
+              "usage": {
+                "input_tokens": 2061,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cache_write_tokens_details": {
+                    "ttl_12h_tokens": 0,
+                    "ttl_30m_tokens": 0
+                  },
+                  "cached_tokens": 0
+                },
+                "output_tokens": 1009,
+                "output_tokens_details": {
+                  "reasoning_tokens": 994
+                },
+                "total_tokens": 3070
+              }
+            }
+          ]
+        },
+        "promptVersion": "folio-kb-0.8.8",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "usage": {
+          "input_tokens": 3674,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 914,
+          "output_tokens_details": {
+            "reasoning_tokens": 516
+          },
+          "total_tokens": 4588
+        }
+      }
+    },
+    {
+      "n": 3,
+      "question": "照我收藏的截图配色，帮我定网站颜色",
+      "plan": {
+        "status": "ready",
+        "depth": "focused",
+        "question": "",
+        "goal": "照我收藏的截图配色，帮我定网站颜色",
+        "outputKind": "advice",
+        "anchorTerms": [],
+        "questions": [
+          "照我收藏的截图配色，帮我定网站颜色",
+          "网站配色 参考 截图 调色板 主色 辅色 中性色",
+          "网页 颜色 系统 配色方案 示例",
+          "品牌网站 配色 视觉风格 颜色规范"
+        ],
+        "topicScope": {
+          "mode": "unrestricted",
+          "names": []
+        },
+        "promptVersion": "folio-kb-0.8.8",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "usage": {
+          "input_tokens": 1313,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 448,
+          "output_tokens_details": {
+            "reasoning_tokens": 332
+          },
+          "total_tokens": 1761
+        }
+      },
+      "stages": {
+        "searched": [
+          "preview-6",
+          "preview-3",
+          "preview-5"
+        ],
+        "reviewed": [
+          "preview-6",
+          "preview-3"
+        ]
+      },
+      "result": {
+        "status": "ready",
+        "outputKind": "advice",
+        "question": "",
+        "summary": "以下建议仅依据收藏文字，尚未分析图片或视频。 可以先按“低饱和、偏暖、中等明度强调色”的方向定网站主色，再用语义变量处理深浅色切换与阴影。",
+        "plan": [
+          "先按“暖浅底 + 一个强调色”做首页基础色板。",
+          "再补深色模式的语义变量和阴影规则。",
+          "如果你给我具体 hex，我可以继续帮你细化成可直接落地的页面色值。"
+        ],
+        "missing": [
+          "具体十六进制色值"
+        ],
+        "recommendations": [
+          {
+            "title": "主色方向",
+            "advice": "借它来确定首页背景、卡片和强调色的整体气质。",
+            "tradeoff": "",
+            "evidence": [
+              {
+                "id": "preview-6",
+                "blockId": "preview-6:source:0",
+                "kind": "source",
+                "quote": "Collected palettes with low saturation that avoid looking cold. The trick is to shift neutrals slightly toward yellow or red, keep one mid-tone accent, and reserve pure white for the largest surface only. Includes hex values for six palettes and notes about contrast on text.",
+                "topics": [
+                  "视觉素材"
+                ],
+                "evidenceId": "E0",
+                "use": "可直接用来定网站调色方向：低饱和、让中性色略偏黄或红、保留一个中等明度的强调色、大片留白用纯白以外的主底色。",
+                "limitation": "缺少具体十六进制色值"
+              }
+            ]
+          },
+          {
+            "title": "深浅色处理",
+            "advice": "借它来补主题切换和阴影规则。",
+            "tradeoff": "",
+            "evidence": [
+              {
+                "id": "preview-3",
+                "blockId": "preview-3:source:0",
+                "kind": "source",
+                "quote": "用 Figma Variables 建立 color/surface、color/text 两组语义变量，再通过 mode 切换深浅色。原型里用 Set variable mode 动作连接开关组件，交互稿就能真实切换主题。注意图片和阴影需要单独处理，阴影在深色下应降低不透明度。",
+                "topics": [
+                  "交互原型"
+                ],
+                "evidenceId": "E1",
+                "use": "可补充网站配色里的阴影处理规则，尤其是深色模式下阴影要降低不透明度，避免脏灰。",
+                "limitation": "只覆盖阴影，不涉及主色方案"
+              }
+            ]
+          }
+        ],
+        "draft": "主色方向\n建议把网站定成“低饱和、偏暖”的基调：中性色略往黄或红偏，主背景不要直接用纯白，而用更柔和的浅暖灰；只保留一个中等明度的强调色，放在按钮、链接和重点标签上。\n\n深浅色处理\n如果还要做深浅色切换，建议把 color/surface 和 color/text 分开成语义变量，再用 mode 切换；深色模式里阴影要降不透明度，避免页面发灰、发脏。",
+        "nextStep": "先按“暖浅底 + 一个强调色”做首页基础色板。",
+        "borrowed": [
+          {
+            "text": "color/surface",
+            "id": "preview-3"
+          }
+        ],
+        "quality": {
+          "reviewed": true,
+          "repaired": false,
+          "audits": [
+            {
+              "issues": [],
+              "proposal": {
+                "status": "ready",
+                "outputKind": "advice",
+                "question": "根据你收藏的低饱和配色，给网站定色",
+                "summary": "可以先按“低饱和、偏暖、中等明度强调色”的方向定网站主色，再用语义变量处理深浅色切换与阴影。",
+                "plan": [
+                  "先按“暖浅底 + 一个强调色”做首页基础色板。",
+                  "再补深色模式的语义变量和阴影规则。",
+                  "如果你给我具体 hex，我可以继续帮你细化成可直接落地的页面色值。"
+                ],
+                "missing": [
+                  "具体十六进制色值"
+                ],
+                "recommendations": [
+                  {
+                    "title": "主色方向",
+                    "advice": "借它来确定首页背景、卡片和强调色的整体气质。",
+                    "tradeoff": "",
+                    "evidence": [
+                      {
+                        "id": "preview-6",
+                        "blockId": "preview-6:source:0",
+                        "kind": "source",
+                        "quote": "Collected palettes with low saturation that avoid looking cold. The trick is to shift neutrals slightly toward yellow or red, keep one mid-tone accent, and reserve pure white for the largest surface only. Includes hex values for six palettes and notes about contrast on text.",
+                        "topics": [
+                          "视觉素材"
+                        ],
+                        "evidenceId": "E0",
+                        "use": "可直接用来定网站调色方向：低饱和、让中性色略偏黄或红、保留一个中等明度的强调色、大片留白用纯白以外的主底色。",
+                        "limitation": "缺少具体十六进制色值"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "深浅色处理",
+                    "advice": "借它来补主题切换和阴影规则。",
+                    "tradeoff": "",
+                    "evidence": [
+                      {
+                        "id": "preview-3",
+                        "blockId": "preview-3:source:0",
+                        "kind": "source",
+                        "quote": "用 Figma Variables 建立 color/surface、color/text 两组语义变量，再通过 mode 切换深浅色。原型里用 Set variable mode 动作连接开关组件，交互稿就能真实切换主题。注意图片和阴影需要单独处理，阴影在深色下应降低不透明度。",
+                        "topics": [
+                          "交互原型"
+                        ],
+                        "evidenceId": "E1",
+                        "use": "可补充网站配色里的阴影处理规则，尤其是深色模式下阴影要降低不透明度，避免脏灰。",
+                        "limitation": "只覆盖阴影，不涉及主色方案"
+                      }
+                    ]
+                  }
+                ],
+                "draft": "主色方向\n建议把网站定成“低饱和、偏暖”的基调：中性色略往黄或红偏，主背景不要直接用纯白，而用更柔和的浅暖灰；只保留一个中等明度的强调色，放在按钮、链接和重点标签上。\n\n深浅色处理\n如果还要做深浅色切换，建议把 color/surface 和 color/text 分开成语义变量，再用 mode 切换；深色模式里阴影要降不透明度，避免页面发灰、发脏。",
+                "nextStep": "先按“暖浅底 + 一个强调色”做首页基础色板。"
+              },
+              "model": "gpt-5.4-mini-2026-03-17",
+              "usage": {
+                "input_tokens": 1661,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cache_write_tokens_details": {
+                    "ttl_12h_tokens": 0,
+                    "ttl_30m_tokens": 0
+                  },
+                  "cached_tokens": 0
+                },
+                "output_tokens": 525,
+                "output_tokens_details": {
+                  "reasoning_tokens": 510
+                },
+                "total_tokens": 2186
+              }
+            }
+          ]
+        },
+        "promptVersion": "folio-kb-0.8.8",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "usage": {
+          "input_tokens": 2488,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 1896,
+          "output_tokens_details": {
+            "reasoning_tokens": 1552
+          },
+          "total_tokens": 4384
+        }
+      }
+    },
+    {
+      "n": 4,
+      "question": "怎么用 Three.js 做首屏的滚动相机动画？",
+      "plan": {
+        "status": "ready",
+        "depth": "focused",
+        "question": "",
+        "goal": "怎么用 Three.js 做首屏的滚动相机动画？",
+        "outputKind": "steps",
+        "anchorTerms": [
+          "Three.js",
+          "threejs"
+        ],
+        "questions": [
+          "Three.js 首屏 滚动 相机 动画 实现",
+          "Three.js 使用滚动驱动相机位置和视角的示例",
+          "Three.js 滚动交互 动画 曲线 缓动 示例",
+          "Three.js 首屏 动效 相机 跟随滚动 的步骤和注意事项"
+        ],
+        "topicScope": {
+          "mode": "unrestricted",
+          "names": []
+        },
+        "promptVersion": "folio-kb-0.8.8",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "usage": {
+          "input_tokens": 1315,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 271,
+          "output_tokens_details": {
+            "reasoning_tokens": 138
+          },
+          "total_tokens": 1586
+        }
+      },
+      "stages": {
+        "searched": [
+          "preview-1"
+        ],
+        "reviewed": [
+          "preview-1"
+        ]
+      },
+      "result": {
+        "status": "no_match",
+        "outputKind": "steps",
+        "question": "",
+        "summary": "已读到的文本只提到“滚动驱动相机路径”和移动端降级，但没有相机滚动动画的具体实现步骤或代码。",
+        "plan": [
+          "补充一段真正讲 Three.js 滚动驱动相机路径的笔记或代码示例，尤其是相机位置/视角如何随滚动更新。",
+          "如果你只想沿用现有记录，我可以先把“滚动驱动相机路径 + 移动端降级”的高层思路整理成提纲。",
+          "再提供一份包含相机控制、缓动或曲线插值的文本材料，我就能直接写成可执行步骤。"
+        ],
+        "missing": [
+          "需要一份明确讲 Three.js 首屏滚动相机动画实现的文本参考，而不只是性能优化或部署记录。"
+        ],
+        "recommendations": [],
+        "draft": "",
+        "nextStep": "补充一段真正讲 Three.js 滚动驱动相机路径的笔记或代码示例，尤其是相机位置/视角如何随滚动更新。",
+        "quality": {
+          "reviewed": true,
+          "repaired": false,
+          "audits": [
+            {
+              "issues": [],
+              "proposal": {
+                "status": "no_match",
+                "outputKind": "steps",
+                "question": "怎么用 Three.js 做首屏的滚动相机动画？",
+                "summary": "已读到的文本只提到“滚动驱动相机路径”和移动端降级，但没有相机滚动动画的具体实现步骤或代码。",
+                "plan": [
+                  "补充一段真正讲 Three.js 滚动驱动相机路径的笔记或代码示例，尤其是相机位置/视角如何随滚动更新。",
+                  "如果你只想沿用现有记录，我可以先把“滚动驱动相机路径 + 移动端降级”的高层思路整理成提纲。",
+                  "再提供一份包含相机控制、缓动或曲线插值的文本材料，我就能直接写成可执行步骤。"
+                ],
+                "missing": [
+                  "需要一份明确讲 Three.js 首屏滚动相机动画实现的文本参考，而不只是性能优化或部署记录。"
+                ],
+                "recommendations": [],
+                "draft": "",
+                "nextStep": "补充一段真正讲 Three.js 滚动驱动相机路径的笔记或代码示例，尤其是相机位置/视角如何随滚动更新。"
+              },
+              "model": "gpt-5.4-mini-2026-03-17",
+              "usage": {
+                "input_tokens": 1400,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cache_write_tokens_details": {
+                    "ttl_12h_tokens": 0,
+                    "ttl_30m_tokens": 0
+                  },
+                  "cached_tokens": 0
+                },
+                "output_tokens": 1315,
+                "output_tokens_details": {
+                  "reasoning_tokens": 1300
+                },
+                "total_tokens": 2715
+              }
+            }
+          ]
+        },
+        "promptVersion": "folio-kb-0.8.8",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "usage": {
+          "input_tokens": 2222,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 463,
+          "output_tokens_details": {
+            "reasoning_tokens": 238
+          },
+          "total_tokens": 2685
+        }
+      }
+    },
+    {
+      "n": 2,
+      "question": "我收藏过哪些交互效果适合放在首页？",
+      "plan": {
+        "status": "ready",
+        "depth": "focused",
+        "question": "",
+        "goal": "我想看看我收藏过哪些适合放在首页的交互效果。",
+        "outputKind": "advice",
+        "anchorTerms": [],
+        "questions": [
+          "我收藏过哪些适合放在首页的交互效果",
+          "首页 交互效果 动效 过渡 悬停 点击",
+          "首屏 / 首页 适合的交互设计案例 或 交互原型",
+          "可用于首页的微交互、滚动交互、导航交互 相关笔记"
+        ],
+        "topicScope": {
+          "mode": "unrestricted",
+          "names": []
+        },
+        "promptVersion": "folio-kb-0.8.8",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "usage": {
+          "input_tokens": 1311,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 321,
+          "output_tokens_details": {
+            "reasoning_tokens": 187
+          },
+          "total_tokens": 1632
+        }
+      },
+      "stages": {
+        "searched": [
+          "preview-1",
+          "preview-2",
+          "preview-3",
+          "preview-10"
+        ],
+        "reviewed": [
+          "preview-1",
+          "preview-2",
+          "preview-3",
+          "preview-10"
+        ]
+      },
+      "result": {
+        "status": "ready",
+        "outputKind": "advice",
+        "question": "",
+        "summary": "你收藏里最适合首页的交互主要是首屏滚动联动、卡片悬停展开和复杂内容的渐进披露。",
+        "plan": [
+          "先把首页内容分成首屏、入口卡片、复杂信息三类，再对应选交互。",
+          "如果你愿意，我可以继续帮你把这三类整理成一个首页结构草图。"
+        ],
+        "missing": [],
+        "recommendations": [
+          {
+            "title": "首屏滚动联动",
+            "advice": "借它做首页首屏的进入动画和视觉叙事。",
+            "tradeoff": "",
+            "evidence": [
+              {
+                "id": "preview-1",
+                "blockId": "preview-1:source:0",
+                "kind": "source",
+                "quote": "这篇记录了我用 Three.js 和 Blender 做个人网站首页的全过程。先在 Blender 里做低模场景并烘焙光照贴图，再导出 glTF，用 React Three Fiber 加载。滚动驱动相机路径，注意移动端降级到静态图。最后部署到 Vercel，并用 Draco 压缩把模型从 12MB 降到 1.4MB。",
+                "topics": [
+                  "网站制作"
+                ],
+                "evidenceId": "E0",
+                "use": "可作为首页首屏或主视觉的滚动联动效果参考：用滚动驱动相机路径，适合做首页进入时的动态叙事。",
+                "limitation": "更偏 3D 首屏，不是通用页面组件"
+              }
+            ]
+          },
+          {
+            "title": "卡片悬停展开",
+            "advice": "借它做首页模块入口的悬停反馈。",
+            "tradeoff": "",
+            "evidence": [
+              {
+                "id": "preview-2",
+                "blockId": "preview-2:source:0",
+                "kind": "source",
+                "quote": "A walkthrough for building a digital bookshelf section on a personal website. Each book spine is a CSS 3D transformed element; hovering pulls it out and reveals notes. Data comes from a simple JSON file, and covers are lazy loaded. The author recommends limiting the shelf to twenty books so the page stays fast.",
+                "topics": [
+                  "网站制作"
+                ],
+                "evidenceId": "E1",
+                "use": "可作为首页模块化交互参考：书脊悬停拉出并显示内容，适合做作品集首页的卡片/项目入口悬停效果。",
+                "limitation": "更适合内容较少的展示区，不适合高密度首页"
+              }
+            ]
+          },
+          {
+            "title": "渐进披露",
+            "advice": "借它整理首页复杂模块的先显后展结构。",
+            "tradeoff": "",
+            "evidence": [
+              {
+                "id": "preview-10",
+                "blockId": "preview-10:source:0",
+                "kind": "source",
+                "quote": "认知负荷分为内在负荷、外在负荷和关联负荷。界面设计主要减少外在负荷：一是分步呈现复杂表单，二是用识别代替回忆，三是保持同类操作位置一致。文中用报税应用和外卖下单流程分别举例，并讨论了渐进披露可能隐藏关键功能的风险。",
+                "topics": [
+                  "研究学习"
+                ],
+                "evidenceId": "E3",
+                "use": "可作为首页复杂内容的展示策略参考：渐进披露能用于首页中先展示关键内容、再展开细节。",
+                "limitation": "重点在流程设计，非具体交互效果"
+              }
+            ]
+          }
+        ],
+        "draft": "首屏滚动联动\n把“滚动驱动相机路径”放在首页首屏或主视觉，适合做进入页面时的动态叙事；如果要照顾移动端，建议保留静态降级版本，避免首屏过重。\n\n卡片悬停展开\n把“悬停拉出并显示内容”改成首页作品集卡片或项目入口的 hover 状态，能让信息在不打扰浏览的前提下被点亮；更适合展示区，不适合高密度首页。\n\n渐进披露\n当首页内容较多时，可先只显示关键内容，再逐步展开细节，用来降低外在负荷；这类交互更适合复杂信息的首页区块，而不是所有内容一次铺开。",
+        "nextStep": "先把首页内容分成首屏、入口卡片、复杂信息三类，再对应选交互。",
+        "borrowed": [],
+        "quality": {
+          "reviewed": true,
+          "repaired": false,
+          "audits": [
+            {
+              "issues": [],
+              "proposal": {
+                "status": "ready",
+                "outputKind": "advice",
+                "question": "我收藏过哪些交互效果适合放在首页？",
+                "summary": "你收藏里最适合首页的交互主要是首屏滚动联动、卡片悬停展开和复杂内容的渐进披露。",
+                "plan": [
+                  "先把首页内容分成首屏、入口卡片、复杂信息三类，再对应选交互。",
+                  "如果你愿意，我可以继续帮你把这三类整理成一个首页结构草图。"
+                ],
+                "missing": [],
+                "recommendations": [
+                  {
+                    "title": "首屏滚动联动",
+                    "advice": "借它做首页首屏的进入动画和视觉叙事。",
+                    "tradeoff": "",
+                    "evidence": [
+                      {
+                        "id": "preview-1",
+                        "blockId": "preview-1:source:0",
+                        "kind": "source",
+                        "quote": "这篇记录了我用 Three.js 和 Blender 做个人网站首页的全过程。先在 Blender 里做低模场景并烘焙光照贴图，再导出 glTF，用 React Three Fiber 加载。滚动驱动相机路径，注意移动端降级到静态图。最后部署到 Vercel，并用 Draco 压缩把模型从 12MB 降到 1.4MB。",
+                        "topics": [
+                          "网站制作"
+                        ],
+                        "evidenceId": "E0",
+                        "use": "可作为首页首屏或主视觉的滚动联动效果参考：用滚动驱动相机路径，适合做首页进入时的动态叙事。",
+                        "limitation": "更偏 3D 首屏，不是通用页面组件"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "卡片悬停展开",
+                    "advice": "借它做首页模块入口的悬停反馈。",
+                    "tradeoff": "",
+                    "evidence": [
+                      {
+                        "id": "preview-2",
+                        "blockId": "preview-2:source:0",
+                        "kind": "source",
+                        "quote": "A walkthrough for building a digital bookshelf section on a personal website. Each book spine is a CSS 3D transformed element; hovering pulls it out and reveals notes. Data comes from a simple JSON file, and covers are lazy loaded. The author recommends limiting the shelf to twenty books so the page stays fast.",
+                        "topics": [
+                          "网站制作"
+                        ],
+                        "evidenceId": "E1",
+                        "use": "可作为首页模块化交互参考：书脊悬停拉出并显示内容，适合做作品集首页的卡片/项目入口悬停效果。",
+                        "limitation": "更适合内容较少的展示区，不适合高密度首页"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "渐进披露",
+                    "advice": "借它整理首页复杂模块的先显后展结构。",
+                    "tradeoff": "",
+                    "evidence": [
+                      {
+                        "id": "preview-10",
+                        "blockId": "preview-10:source:0",
+                        "kind": "source",
+                        "quote": "认知负荷分为内在负荷、外在负荷和关联负荷。界面设计主要减少外在负荷：一是分步呈现复杂表单，二是用识别代替回忆，三是保持同类操作位置一致。文中用报税应用和外卖下单流程分别举例，并讨论了渐进披露可能隐藏关键功能的风险。",
+                        "topics": [
+                          "研究学习"
+                        ],
+                        "evidenceId": "E3",
+                        "use": "可作为首页复杂内容的展示策略参考：渐进披露能用于首页中先展示关键内容、再展开细节。",
+                        "limitation": "重点在流程设计，非具体交互效果"
+                      }
+                    ]
+                  }
+                ],
+                "draft": "首屏滚动联动\n把“滚动驱动相机路径”放在首页首屏或主视觉，适合做进入页面时的动态叙事；如果要照顾移动端，建议保留静态降级版本，避免首屏过重。\n\n卡片悬停展开\n把“悬停拉出并显示内容”改成首页作品集卡片或项目入口的 hover 状态，能让信息在不打扰浏览的前提下被点亮；更适合展示区，不适合高密度首页。\n\n渐进披露\n当首页内容较多时，可先只显示关键内容，再逐步展开细节，用来降低外在负荷；这类交互更适合复杂信息的首页区块，而不是所有内容一次铺开。",
+                "nextStep": "先把首页内容分成首屏、入口卡片、复杂信息三类，再对应选交互。"
+              },
+              "model": "gpt-5.4-mini-2026-03-17",
+              "usage": {
+                "input_tokens": 2103,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cache_write_tokens_details": {
+                    "ttl_12h_tokens": 0,
+                    "ttl_30m_tokens": 0
+                  },
+                  "cached_tokens": 0
+                },
+                "output_tokens": 951,
+                "output_tokens_details": {
+                  "reasoning_tokens": 936
+                },
+                "total_tokens": 3054
+              }
+            }
+          ]
+        },
+        "promptVersion": "folio-kb-0.8.8",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "usage": {
+          "input_tokens": 3268,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 1427,
+          "output_tokens_details": {
+            "reasoning_tokens": 1034
+          },
+          "total_tokens": 4695
+        }
+      }
+    },
+    {
+      "n": 5,
+      "question": "帮我改这段简历经历：参与了学校选课系统的重设计项目，负责部分界面设计，和团队一起完成了用户调研。 (same conversation as Q2)",
+      "plan": {
+        "status": "ready",
+        "depth": "focused",
+        "question": "",
+        "goal": "帮我改写这段简历经历，让它更像简历表述",
+        "outputKind": "copy",
+        "anchorTerms": [],
+        "questions": [
+          "简历经历 改写 用户调研 界面设计 选课系统",
+          "项目经历 简历表述 重设计 项目 用户调研 团队协作",
+          "UI设计 用户研究 简历 bullet 表达",
+          "学校项目 简历经历 设计 调研 协作"
+        ],
+        "topicScope": {
+          "mode": "unrestricted",
+          "names": []
+        },
+        "promptVersion": "folio-kb-0.8.8",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "usage": {
+          "input_tokens": 1601,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 362,
+          "output_tokens_details": {
+            "reasoning_tokens": 238
+          },
+          "total_tokens": 1963
+        }
+      },
+      "stages": {
+        "searched": [
+          "preview-7",
+          "preview-10",
+          "preview-9"
+        ],
+        "reviewed": [
+          "preview-7",
+          "preview-10",
+          "preview-9"
+        ]
+      },
+      "result": {
+        "status": "ready",
+        "outputKind": "copy",
+        "question": "",
+        "summary": "按简历写法改成更具体的表述，保留“部分”职责范围，并避免暗示你主导了改动。",
+        "plan": [
+          "补上你具体负责的页面或模块名称。",
+          "补上用户调研的结论或你整理出的观察重点。",
+          "如果有结果，再补一条被采纳的改动或量化变化。"
+        ],
+        "missing": [
+          "具体负责的页面或模块名称",
+          "用户调研的结论或观察重点",
+          "被采纳的改动或结果数据"
+        ],
+        "recommendations": [
+          {
+            "title": "文案结构",
+            "advice": "借用“写清负责范围”的思路，把原句改得更具体，同时保留你只是部分负责的范围。",
+            "tradeoff": "",
+            "evidence": [
+              {
+                "id": "preview-7",
+                "blockId": "preview-7:source:0",
+                "kind": "source",
+                "quote": "很多简历写“参与了某某项目的设计”。更好的写法是说明你负责的范围、做出的判断和带来的变化，例如：独立负责结算流程重设计，将步骤从五步减到三步，可用性测试中完成率从 62% 提升到 88%。没有数据时，写清楚决策依据和被采纳的范围。",
+                "topics": [
+                  "职业发展"
+                ],
+                "evidenceId": "E0",
+                "use": "可提醒避免“参与了某某项目的设计”这类空泛表达，帮助整体改写更有力度。",
+                "limitation": "只有问题提示，没有直接可套用的改写句。"
+              }
+            ]
+          }
+        ],
+        "draft": "参与学校选课系统重设计项目，负责部分界面设计；和团队一起完成用户调研，整理【待补充：调研结论/观察重点】。",
+        "nextStep": "补上你具体负责的页面或模块名称。",
+        "borrowed": [],
+        "quality": {
+          "reviewed": true,
+          "repaired": true,
+          "audits": [
+            {
+              "issues": [
+                "Preserve the USER partial scope: keep 部分 in the rewritten responsibility.",
+                "“根据【待补充：调研结论/决策依据】推动【待补充：被采纳的改动范围】”暗示你推动了改动；原始事实只说你参与重设计并和团队完成了用户调研，未提供你主导或推动改动的依据。"
+              ],
+              "proposal": {
+                "status": "ready",
+                "outputKind": "copy",
+                "question": "帮我改这段简历经历：参与了学校选课系统的重设计项目，负责部分界面设计，和团队一起完成了用户调研。",
+                "summary": "按简历写法改成突出负责范围、判断依据和改动结果的表述，并补上待确认信息。",
+                "sections": [
+                  {
+                    "heading": "",
+                    "text": "参与学校选课系统重设计项目，负责【待补充：具体页面/模块】的界面设计；与团队一起完成用户调研，并根据【待补充：调研结论/决策依据】推动【待补充：被采纳的改动范围】。",
+                    "sourceId": "preview-7",
+                    "use": "借用“写清负责范围、判断和变化”的简历改写思路，把原句改得更具体。"
+                  }
+                ],
+                "userClaims": [
+                  {
+                    "claim": "参与学校选课系统的重设计项目",
+                    "userQuote": "参与了学校选课系统的重设计项目"
+                  },
+                  {
+                    "claim": "负责部分界面设计",
+                    "userQuote": "负责部分界面设计"
+                  },
+                  {
+                    "claim": "和团队一起完成了用户调研",
+                    "userQuote": "和团队一起完成了用户调研"
+                  }
+                ],
+                "plan": [
+                  "补上你具体负责的页面或模块名称。",
+                  "补上用户调研的结论或被采纳的改动。",
+                  "如果有结果数据，再把变化写成可量化表达。"
+                ],
+                "missing": [
+                  "具体负责的页面/模块",
+                  "用户调研的结论或决策依据",
+                  "被采纳的改动范围或结果数据"
+                ]
+              },
+              "model": "gpt-5.4-mini-2026-03-17",
+              "usage": {
+                "input_tokens": 1948,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cache_write_tokens_details": {
+                    "ttl_12h_tokens": 0,
+                    "ttl_30m_tokens": 0
+                  },
+                  "cached_tokens": 0
+                },
+                "output_tokens": 1449,
+                "output_tokens_details": {
+                  "reasoning_tokens": 1356
+                },
+                "total_tokens": 3397
+              }
+            },
+            {
+              "issues": [],
+              "proposal": {
+                "status": "ready",
+                "outputKind": "copy",
+                "question": "帮我改这段简历经历：参与了学校选课系统的重设计项目，负责部分界面设计，和团队一起完成了用户调研。",
+                "summary": "按简历写法改成更具体的表述，保留“部分”职责范围，并避免暗示你主导了改动。",
+                "plan": [
+                  "补上你具体负责的页面或模块名称。",
+                  "补上用户调研的结论或你整理出的观察重点。",
+                  "如果有结果，再补一条被采纳的改动或量化变化。"
+                ],
+                "missing": [
+                  "具体负责的页面或模块名称",
+                  "用户调研的结论或观察重点",
+                  "被采纳的改动或结果数据"
+                ],
+                "recommendations": [
+                  {
+                    "title": "文案结构",
+                    "advice": "借用“写清负责范围”的思路，把原句改得更具体，同时保留你只是部分负责的范围。",
+                    "tradeoff": "",
+                    "evidence": [
+                      {
+                        "id": "preview-7",
+                        "blockId": "preview-7:source:0",
+                        "kind": "source",
+                        "quote": "很多简历写“参与了某某项目的设计”。更好的写法是说明你负责的范围、做出的判断和带来的变化，例如：独立负责结算流程重设计，将步骤从五步减到三步，可用性测试中完成率从 62% 提升到 88%。没有数据时，写清楚决策依据和被采纳的范围。",
+                        "topics": [
+                          "职业发展"
+                        ],
+                        "evidenceId": "E0",
+                        "use": "可提醒避免“参与了某某项目的设计”这类空泛表达，帮助整体改写更有力度。",
+                        "limitation": "只有问题提示，没有直接可套用的改写句。"
+                      }
+                    ]
+                  }
+                ],
+                "draft": "参与学校选课系统重设计项目，负责部分界面设计；和团队一起完成用户调研，整理【待补充：调研结论/观察重点】。",
+                "nextStep": "补上你具体负责的页面或模块名称。"
+              },
+              "model": "gpt-5.4-mini-2026-03-17",
+              "usage": {
+                "input_tokens": 1930,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cache_write_tokens_details": {
+                    "ttl_12h_tokens": 0,
+                    "ttl_30m_tokens": 0
+                  },
+                  "cached_tokens": 0
+                },
+                "output_tokens": 531,
+                "output_tokens_details": {
+                  "reasoning_tokens": 516
+                },
+                "total_tokens": 2461
+              }
+            }
+          ]
+        },
+        "promptVersion": "folio-kb-0.8.8",
+        "model": "gpt-5.4-mini-2026-03-17",
+        "usage": {
+          "input_tokens": 3609,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cache_write_tokens_details": {
+              "ttl_12h_tokens": 0,
+              "ttl_30m_tokens": 0
+            },
+            "cached_tokens": 0
+          },
+          "output_tokens": 844,
+          "output_tokens_details": {
+            "reasoning_tokens": 516
+          },
+          "total_tokens": 4453
+        }
+      }
+    }
+  ]
+}

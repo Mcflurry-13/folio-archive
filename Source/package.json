@@ -1,0 +1,21 @@
+{
+  "name": "inspiration-archive",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file=.env.local server.mjs",
+    "start": "node server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "node tools/e2e-agent-shell.mjs && node tools/e2e-xhs-sync.mjs && node tools/e2e-in-page-note.mjs && node tools/e2e-collection-flow.mjs && node tools/e2e-knowledge.mjs && node tools/e2e-summaries.mjs && node tools/e2e-topic-localization.mjs && node tools/e2e-public-collection.mjs && node tools/e2e-collection-picker.mjs && node tools/e2e-collection-switch.mjs && node tools/e2e-topic-correction.mjs && node tools/e2e-organization-progress.mjs && node tools/e2e-review-bulk.mjs && node tools/e2e-rule-application.mjs && node tools/e2e-multiple-topics.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.0"
+  },
+  "bin": {
+    "folio": "cli/folio.mjs"
+  }
+}

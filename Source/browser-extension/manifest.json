@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Folio · 小红书收藏连接器",
+  "version": "0.1.0",
+  "description": "Read a requested RedNote note in your browser and save its text and images to local Folio.",
+  "permissions": [
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.xiaohongshu.com/*",
+    "https://*.rednote.com/*",
+    "https://xhslink.com/*",
+    "https://*.xhslink.com/*",
+    "https://*.xhscdn.com/*",
+    "https://*.rednotecdn.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://127.0.0.1/*",
+        "http://localhost/*"
+      ],
+      "js": [
+        "bridge.js"
+      ]
+    }
+  ]
+}

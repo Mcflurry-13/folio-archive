@@ -1,0 +1,138 @@
+{
+ "version": 1,
+ "note": "Synthetic evaluation fixtures (preview-1 to preview-12). Not personal saves. Text only; images are not used by the agent.",
+ "items": [
+  {
+   "id": "preview-1",
+   "title": "用 Three.js 做一个会呼吸的 3D 个人网站，从建模到部署的完整流程",
+   "url": "https://www.xiaohongshu.com/explore/aaa1",
+   "category": "网站制作",
+   "content": "这篇记录了我用 Three.js 和 Blender 做个人网站首页的全过程。先在 Blender 里做低模场景并烘焙光照贴图，再导出 glTF，用 React Three Fiber 加载。滚动驱动相机路径，注意移动端降级到静态图。最后部署到 Vercel，并用 Draco 压缩把模型从 12MB 降到 1.4MB。",
+   "note": "做案例页首屏时参考相机路径",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-12T12:00:00.000Z"
+  },
+  {
+   "id": "preview-2",
+   "title": "Digital bookshelf for a personal site",
+   "url": "https://www.xiaohongshu.com/explore/aaa2",
+   "category": "网站制作",
+   "content": "A walkthrough for building a digital bookshelf section on a personal website. Each book spine is a CSS 3D transformed element; hovering pulls it out and reveals notes. Data comes from a simple JSON file, and covers are lazy loaded. The author recommends limiting the shelf to twenty books so the page stays fast.",
+   "note": "",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-11T12:00:00.000Z"
+  },
+  {
+   "id": "preview-3",
+   "title": "Figma 可变原型：用变量做一个真实可切换的深浅色主题",
+   "url": "https://www.xiaohongshu.com/explore/aaa3",
+   "category": "交互原型",
+   "content": "用 Figma Variables 建立 color/surface、color/text 两组语义变量，再通过 mode 切换深浅色。原型里用 Set variable mode 动作连接开关组件，交互稿就能真实切换主题。注意图片和阴影需要单独处理，阴影在深色下应降低不透明度。",
+   "note": "",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-10T12:00:00.000Z"
+  },
+  {
+   "id": "preview-4",
+   "title": "ProtoPie 传感器联动教程",
+   "url": "https://www.xiaohongshu.com/explore/aaa4",
+   "category": "交互原型",
+   "content": "本篇为视频笔记，视频链接: https://www.xiaohongshu.com/video/1",
+   "note": "",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-09T12:00:00.000Z"
+  },
+  {
+   "id": "preview-5",
+   "title": "作品集排版 12 个细节：留白、栅格与图片节奏",
+   "url": "https://www.xiaohongshu.com/explore/aaa5",
+   "category": "视觉素材",
+   "content": "整理了十二个让作品集更耐看的排版细节：一、每屏只讲一件事；二、统一 8pt 栅格；三、标题与正文字号比至少 1.6；四、图片圆角统一；五、项目封面用同一种构图；六、案例开头先给结论；七、过程图少而精。其余细节见图。",
+   "note": "封面构图统一这一点马上用",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-08T12:00:00.000Z"
+  },
+  {
+   "id": "preview-6",
+   "title": "Muted color palettes that still feel warm",
+   "url": "https://www.xiaohongshu.com/explore/aaa6",
+   "category": "视觉素材",
+   "content": "Collected palettes with low saturation that avoid looking cold. The trick is to shift neutrals slightly toward yellow or red, keep one mid-tone accent, and reserve pure white for the largest surface only. Includes hex values for six palettes and notes about contrast on text.",
+   "note": "",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-07T12:00:00.000Z"
+  },
+  {
+   "id": "preview-7",
+   "title": "设计师简历怎么写贡献：把“参与”改成可验证的结果",
+   "url": "https://www.xiaohongshu.com/explore/aaa7",
+   "category": "职业发展",
+   "content": "很多简历写“参与了某某项目的设计”。更好的写法是说明你负责的范围、做出的判断和带来的变化，例如：独立负责结算流程重设计，将步骤从五步减到三步，可用性测试中完成率从 62% 提升到 88%。没有数据时，写清楚决策依据和被采纳的范围。",
+   "note": "",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-06T12:00:00.000Z"
+  },
+  {
+   "id": "preview-8",
+   "title": "LinkedIn About 模板",
+   "url": "https://www.xiaohongshu.com/explore/aaa8",
+   "category": "职业发展",
+   "content": "看图",
+   "note": "",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-05T12:00:00.000Z"
+  },
+  {
+   "id": "preview-9",
+   "title": "How I run five-minute guerrilla usability tests",
+   "url": "https://www.xiaohongshu.com/explore/aaa9",
+   "category": "研究学习",
+   "content": "Notes on quick hallway tests: prepare one task and one success criterion, recruit five people, stay silent while they try, and write down the first point of hesitation. Synthesize on sticky notes the same day. The author argues that five short tests each week beat one large study each quarter.",
+   "note": "",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-04T12:00:00.000Z"
+  },
+  {
+   "id": "preview-10",
+   "title": "认知负荷理论在界面设计里的三种用法",
+   "url": "https://www.xiaohongshu.com/explore/aaa10",
+   "category": "研究学习",
+   "content": "认知负荷分为内在负荷、外在负荷和关联负荷。界面设计主要减少外在负荷：一是分步呈现复杂表单，二是用识别代替回忆，三是保持同类操作位置一致。文中用报税应用和外卖下单流程分别举例，并讨论了渐进披露可能隐藏关键功能的风险。",
+   "note": "",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-03T12:00:00.000Z"
+  },
+  {
+   "id": "preview-11",
+   "title": "随手记：Folio 案例页想讲的三件事",
+   "url": "",
+   "category": "未分类",
+   "content": "一是为什么收藏之后很少再看；二是我如何把收藏转成任务里的参考；三是哪些地方 AI 只做建议、由我确认。",
+   "note": "",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-02T12:00:00.000Z"
+  },
+  {
+   "id": "preview-12",
+   "title": "https://www.awwwards.com/websites/portfolio/",
+   "url": "https://www.awwwards.com/websites/portfolio/",
+   "category": "未分类",
+   "content": "",
+   "note": "",
+   "images": [],
+   "image": "",
+   "createdAt": "2026-11-01T12:00:00.000Z"
+  }
+ ]
+}

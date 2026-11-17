@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Folio · 连接小红书 / Connect RedNote</title>
+<link rel="stylesheet" href="/style.css">
+<script>try{if(localStorage.getItem('folio-dark')==='1')document.documentElement.classList.add('dark')}catch(e){}</script>
+<style>
+.guide{max-width:680px;margin:0 auto;padding:40px 24px 96px}
+.guide .back{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--sub)}
+.guide h1{font-size:28px;letter-spacing:-.015em;margin-top:28px}
+.guide .en{color:var(--mute)}
+.guide p{font-size:15px;line-height:1.8;margin-top:10px}
+.steps{list-style:none;counter-reset:s;margin:28px 0 0;padding:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;column-gap:12px;padding:16px 0;border-top:1px solid var(--line)}
+.steps li::before{content:counter(s);width:24px;height:24px;border-radius:50%;border:1px solid var(--line-strong);display:grid;place-items:center;font-size:12px;color:var(--sub);margin-top:2px}
+.steps p{margin:0}
+.steps .en{font-size:14px;margin-top:4px}
+code{font:13px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--canvas);padding:2px 6px;border-radius:4px}
+.guide a:not(.back){text-decoration:underline;text-underline-offset:3px}
+.limits{margin-top:28px;padding:18px 20px;border-radius:12px;background:var(--canvas)}
+.limits h2{font-size:15px;font-weight:500}
+.limits p{font-size:14px}
+</style>
+</head>
+<body>
+<main class="guide">
+  <a class="back" href="/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>Folio</a>
+  <h1>连接小红书 <span class="en">Connect RedNote</span></h1>
+  <p>安装一次连接器，之后粘贴链接即可读取正文和配图。请在同一个 Chrome 浏览器中打开 Folio 并登录小红书。</p>
+  <p class="en">Install the connector once, then paste links to capture text and images. Open Folio and sign in to RedNote in the same Chrome browser.</p>
+
+  <ol class="steps">
+    <li><div><p>打开 <code>chrome://extensions</code>，开启开发者模式。</p><p class="en">Open <code>chrome://extensions</code> and turn on Developer mode.</p></div></li>
+    <li><div><p>点击“加载已解压的扩展程序”，选择项目里的 <code>browser-extension</code> 文件夹。</p><p class="en">Click Load unpacked and choose the project’s <code>browser-extension</code> folder.</p></div></li>
+    <li><div><p>打开 <a href="https://www.xiaohongshu.com" target="_blank" rel="noreferrer">小红书</a> 并完成登录。刷新 <a href="http://127.0.0.1:5180/">Folio</a>，粘贴完整分享链接。</p><p class="en">Open <a href="https://www.xiaohongshu.com" target="_blank" rel="noreferrer">RedNote</a> and sign in. Refresh <a href="http://127.0.0.1:5180/">Folio</a> and paste a full share link.</p></div></li>
+  </ol>
+
+  <section class="limits" aria-labelledby="limitsTitle">
+    <h2 id="limitsTitle">连接器会做什么 <span class="en">What the connector does</span></h2>
+    <p>连接器只向本机 Folio 返回你指定笔记的正文与图片，不读取或导出 Cookie。读取时会临时打开一个后台笔记标签页。需要登录、验证或无法访问的笔记会提示重试。视频笔记只尝试读取封面，不下载视频文件。</p>
+    <p class="en">The connector returns the requested note to local Folio only. It does not read or export cookies. A temporary background tab opens during capture. Notes that need sign-in or verification, or are unavailable, ask you to retry. For video notes only the cover is attempted; video files are not downloaded.</p>
+    <p>连接器只允许本机 5180 端口。5181 设计预览会显示“未连接”，这是正常的。当前聊天内置浏览器不能安装此 Chrome 扩展；已有收藏可先导出 JSON，再在 Chrome 中导入。</p>
+    <p class="en">The connector only allows local port 5180, so the 5181 design preview shows “not connected” as expected. The built-in chat browser cannot install this Chrome extension; export your materials as JSON and import them in Chrome.</p>
+  </section>
+</main>
+</body>
+</html>

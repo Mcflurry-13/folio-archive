@@ -1,0 +1,13 @@
+# Credentials and local runtime
+.env*
+node_modules/
+.vercel/
+dist/
+# Generated browser output and potentially personal evidence
+test-output/
+evidence/
+# Defensive: do not add private hand-offs copied into this project
+folio-*/
+folio-archive*.json
+Folio-images*.json
+# ../folio-* lives outside this repository and must never be copied in.

@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Folio</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cpath d=%27M2 3h7v7H2zm10 0h10v4H12zm0 7h10v4H12zM2 13h7v9H2zm10 4h10v5H12z%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/folio-apple.css">
+<script>try{if(localStorage.getItem('folio-dark')==='1')document.documentElement.classList.add('dark')}catch(e){}</script>
+</head>
+<body class="is-starting">
+<div id="startupStatus" role="status">Folio</div>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="topbar">
+  <a class="brand" href="./" aria-label="Folio home">
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h7v7H2zm10 0h10v4H12zm0 7h10v4H12zM2 13h7v9H2zm10 4h10v5H12z" fill="currentColor"/></svg>
+    <span class="brand-name">Folio</span>
+  </a>
+  <nav class="tabs" aria-label="Main navigation">
+    <button type="button" data-view="find">Agent</button>
+    <button type="button" data-view="library">Knowledge base</button>
+  </nav>
+  <div class="top-actions">
+    <button id="switchCollection" type="button" class="chip">Switch collection</button>
+    <button type="button" data-open-import class="chip">Import saves</button>
+    <button id="language" class="chip lang" type="button" aria-label="切换到中文">中文</button>
+    <button id="settingsButton" class="icon-button" type="button" aria-label="Settings" aria-haspopup="dialog">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<nav id="librarySubnav" class="library-subnav" aria-label="Knowledge base views" hidden><button type="button" data-library-view="library">Browse</button><button type="button" data-library-view="organize">AI organization</button></nav>
+
+<!-- ===================== Library ===================== -->
+<section id="libraryView" class="view library" aria-labelledby="libraryTitle">
+  <div id="collectionLibraryEntry" class="collection-library-entry"></div>
+  <aside class="rail" aria-label="Filters">
+    <div class="rail-block">
+      <h2 class="rail-title">Topics</h2>
+      <nav id="topicList" class="space-list" aria-label="Topics"></nav>
+      <form id="newTopicForm" class="new-space" hidden>
+        <label class="sr-only" for="newTopicName">New topic name</label>
+        <input id="newTopicName" maxlength="60" placeholder="New topic name" required>
+        <div class="new-space-actions">
+          <button type="submit" class="chip solid">Add</button>
+          <button type="button" id="cancelTopic" class="chip">Cancel</button>
+        </div>
+      </form>
+      <button id="newTopic" type="button" class="space-add">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        <span>New topic</span>
+      </button>
+    </div>
+    <div class="rail-block">
+      <h2 class="rail-title">Sources</h2>
+      <nav id="sourceList" class="space-list" aria-label="Sources"></nav>
+    </div>
+  </aside>
+
+  <div class="library-main">
+    <section id="libraryNextStep" class="library-next-step" aria-live="polite"></section>
+    <div class="library-head">
+      <div class="library-heading">
+        <h1 id="libraryTitle">All materials</h1>
+        <p id="libraryCount" class="count"></p>
+      </div>
+      <div class="head-actions">
+        <button id="selectMode" type="button" class="ghost" aria-pressed="false">Select</button>
+        <button id="addToggle" type="button" class="primary" aria-expanded="false" aria-controls="quickForm">Add</button>
+      </div>
+    </div>
+
+    <form id="quickForm" class="composer" autocomplete="off" hidden>
+      <label class="sr-only" for="quickText">Link or note</label>
+      <textarea id="quickText" rows="1" placeholder="Paste a link or share text, or write a note" aria-describedby="quickHelp"></textarea>
+      <div id="capturePanel" class="capture" data-state="idle" hidden>
+        <div class="capture-status"><span class="state-mark" aria-hidden="true"></span><p id="captureStatus" role="status" aria-live="polite"></p></div>
+        <div id="capturePreview" class="capture-preview"></div>
+        <div id="captureHelp" class="capture-help" hidden>
+          <button type="button" id="connectLink" class="chip">Connect browser</button>
+          <button type="button" id="retryCapture" class="chip">Retry</button>
+          <button type="button" id="saveLinkOnly" class="chip">Save link only</button>
+          <button type="button" id="editCapture" class="chip">Edit before saving</button>
+        </div>
+      </div>
+      <div class="composer-foot">
+        <p id="quickHelp" class="hint">Enter saves. Shift+Enter adds a new line. For many saves at once, connect a source.</p>
+        <div class="composer-actions">
+          <label class="inline-select"><span>Topic</span><select id="quickCategory"></select></label>
+          <button id="add" type="button" class="ghost">Write a note</button>
+          <button id="importInline" type="button" class="ghost">Import file</button>
+          <button id="quickSave" type="submit" class="primary" disabled>Save</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="library-tools">
+      <label class="search">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        <span class="sr-only">Search Library</span>
+        <input id="filter" type="search" placeholder="Search titles, text and notes">
+        <kbd aria-hidden="true">/</kbd>
+      </label>
+      <div class="tool-group">
+        <label class="sr-only" for="mobileFilter">Topic or source</label>
+        <select id="mobileFilter" class="select mobile-only"></select>
+        <div class="segmented" role="group" aria-label="View">
+          <button id="viewGrid" type="button" aria-pressed="true" aria-label="Grid" title="Grid">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="7" height="9" rx="1.5"/><rect x="13" y="4" width="7" height="5" rx="1.5"/><rect x="4" y="15" width="7" height="5" rx="1.5"/><rect x="13" y="11" width="7" height="9" rx="1.5"/></svg>
+          </button>
+          <button id="viewTime" type="button" aria-pressed="false" aria-label="Timeline" title="Timeline">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4.5 6h.01M4.5 12h.01M4.5 18h.01" stroke-width="2.4"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section id="summaryBar" class="reading-bar" aria-live="polite" hidden></section>
+
+    <section id="recentSection" class="recent" aria-labelledby="recentTitle" hidden>
+      <div class="section-row">
+        <h2 id="recentTitle">Recently added</h2>
+        <p id="recentNote" class="hint"></p>
+      </div>
+      <div id="recentStrip" class="recent-strip"></div>
+    </section>
+
+    <div id="libraryContent" class="library-content">
+      <h2 id="allTitle" class="sub-title" hidden>All materials</h2>
+      <div id="cards" class="masonry"></div>
+      <div id="timeline" class="timeline" hidden></div>
+      <div id="empty" class="empty" hidden></div>
+    </div>
+  </div>
+
+  <div id="selectionBar" class="selection-bar" hidden>
+    <p id="selectionCount"></p>
+    <label class="inline-select"><span class="sr-only">Add to topic</span><select id="selectionTopic"></select></label>
+    <button id="selectionCompare" type="button" class="ghost">Compare</button>
+    <button id="selectionFind" type="button" class="ghost">Find with these</button>
+    <button id="selectionDone" type="button" class="primary">Done</button>
+  </div>
+</section>
+
+<!-- ===================== Organize ===================== -->
+<section id="organizeView" class="view organize" aria-labelledby="organizeTitle" hidden>
+  <div class="page-inner">
+    <h1 id="organizeTitle">Organize</h1>
+    <p class="lede">Review how new materials should be grouped. Nothing changes until you accept, and every change can be undone.</p>
+    <div id="progressLines" class="progress-lines"></div>
+    <div id="organizeBody"></div>
+  </div>
+</section>
+
+<!-- ===================== Find inspiration ===================== -->
+<section id="findView" class="view find" aria-label="Agent" hidden></section>
+
+<!-- ===================== Connections ===================== -->
+<dialog id="connectionsView" class="modal intake-panel" aria-labelledby="connTitle">
+<div class="dialog-inner"><div class="dialog-head"><h2 id="connTitle">Import RedNote saves</h2><button type="button" class="icon-button" data-close="connectionsView" aria-label="Close">×</button></div>
+<p class="dialog-lede">Bring in your materials, then review AI organization suggestions.</p>
+<div class="collection-options"><section><h3>Markdown and backups</h3><p>Upload Markdown saves, a Folio backup or a JSON image pack.</p><button id="intakeFiles" class="primary" type="button">Choose files</button></section><section><h3>RedNote links</h3><p>Save links first. Add source text for the agent to use.</p><button id="intakeLinks" class="ghost" type="button">Paste links</button></section></div>
+<div id="sourceRows" class="conn-list"></div>
+<p class="fine">Choose 100 X or RedNote references on your first visit. Your edits stay in this browser.</p></div></dialog>
+</main>
+
+<nav class="bottom-nav" aria-label="Main navigation"><button type="button" data-view="find">Agent</button><button type="button" data-view="library">Knowledge base</button></nav>
+
+<!-- ===================== Dialogs ===================== -->
+<dialog id="editor" class="drawer" aria-labelledby="editorTitle">
+  <form id="saveForm" class="drawer-form">
+    <header class="drawer-head">
+      <div class="drawer-heading">
+        <h2 id="editorTitle">New note</h2>
+        <p id="editorMeta" class="drawer-meta"></p>
+      </div>
+      <a id="sourceLink" class="chip" target="_blank" rel="noopener noreferrer" hidden><span>Open source</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M10 8h6v6"/></svg></a>
+      <button type="button" class="icon-button" data-close="editor" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </header>
+    <div class="drawer-body" tabindex="-1">
+      <input id="editId" type="hidden">
+      <label class="field title-field"><span>Title</span><textarea id="title" required maxlength="160" rows="1" placeholder="What makes this worth keeping?"></textarea></label>
+      <div class="field topics-field">
+        <span id="topicsLabel">Topics</span>
+        <div id="topicChips" class="topic-editor" role="group" aria-labelledby="topicsLabel"></div>
+        <p id="topicHint" class="field-hint"></p>
+      </div>
+      <input id="category" type="hidden">
+      <datalist id="categoryList"></datalist>
+      <section id="readingSummary" class="reading-detail" hidden></section>
+      <section id="viewer" class="viewer" tabindex="0" aria-label="Image viewer. Use the arrow keys to switch images." hidden>
+        <img id="viewerImage" alt="">
+        <button type="button" id="prevImage" class="viewer-nav prev" aria-label="Previous image"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
+        <button type="button" id="nextImage" class="viewer-nav next" aria-label="Next image"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+        <span id="imageCounter" class="viewer-count"></span>
+      </section>
+      <div class="thumbs-row">
+        <div id="imageGallery" class="thumbs"></div>
+        <label class="add-image">
+          <input id="image" type="file" accept="image/png,image/jpeg,image/webp" multiple class="sr-only">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span>Add images</span>
+        </label>
+      </div>
+      <p id="imageState" class="field-hint" aria-live="polite"></p>
+      <label class="field"><span>Source text / image description</span><textarea id="content" maxlength="20000" rows="3" placeholder="Paste the source text or describe the image. A link can be saved now and filled in later."></textarea></label>
+      <div id="originBox" class="origin" hidden></div>
+      <div id="profileBox" class="profile-box" hidden></div>
+      <label class="field"><span>Source link</span><input id="url" type="url" inputmode="url" placeholder="https://…"></label>
+      <div class="field note-field"><span><label for="note">My note</label></span><div class="note-wrap"><textarea id="note" maxlength="2000" rows="2" aria-describedby="noteAssist"></textarea><div id="noteAssist" class="note-assist" hidden></div></div></div>
+      <section id="relatedBox" class="related" hidden></section>
+    </div>
+    <footer class="drawer-foot">
+      <button id="deleteItem" type="button" class="ghost" hidden>Delete</button>
+      <p id="saveState" class="save-state" aria-live="polite"></p>
+      <button id="saveItem" class="primary" type="submit">Save</button>
+      <p id="saveError" class="error" role="alert"></p>
+    </footer>
+  </form>
+</dialog>
+
+
+
+
+
+
+
+<dialog id="settings" class="modal" aria-labelledby="settingsTitle">
+  <div class="dialog-inner">
+    <div class="dialog-head">
+      <h2 id="settingsTitle">Settings</h2>
+      <button type="button" class="icon-button" data-close="settings" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <p id="menuCount" class="menu-count"></p>
+    <div class="menu-group">
+      <div class="menu-item static">
+        <span class="menu-text"><span>Language</span><small>Your saved text always stays in its original language.</small></span>
+        <div class="segmented text" role="group" aria-label="Language">
+          <button type="button" id="langEn" aria-pressed="true">English</button>
+          <button type="button" id="langZh" aria-pressed="false">中文</button>
+        </div>
+      </div>
+      <button id="appearance" type="button" class="menu-item" role="switch" aria-checked="false">
+        <span class="menu-text"><span>Dark appearance</span></span><span class="switch" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="menu-group">
+      <button id="importButton" type="button" class="menu-item"><span class="menu-text"><span>Import a file</span><small>Bookmark HTML, TXT link list, Folio JSON backup</small></span></button>
+      <button id="backup" type="button" class="menu-item"><span class="menu-text"><span>Export backup</span><small>JSON file with source text, topics and images</small></span></button>
+    </div>
+    <div class="menu-group">
+      <button id="about" type="button" class="menu-item"><span class="menu-text"><span>About the Folio agent</span><small>What AI does in Folio and where it stops</small></span></button>
+    </div>
+    <p class="menu-note">Choose 100 X or RedNote references on your first visit. Your edits stay in this browser.</p>
+  </div>
+</dialog>
+
+<dialog id="importer" class="modal" aria-labelledby="importTitle">
+  <div class="dialog-inner">
+    <div class="dialog-head">
+      <h2 id="importTitle">Import a file</h2>
+      <button type="button" class="icon-button" data-close="importer" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <p class="dialog-lede">Import Markdown notes (multiple files supported), bookmark HTML, a Folio JSON backup, or TXT links. Markdown text and media links are preserved; duplicates are skipped.</p>
+    <label class="field-hint"><input type="checkbox" id="fillEmptySource"> Fill missing source text for existing links; keep titles, topics and personal notes.</label>
+    <label class="field"><span>Topic for items without a folder</span><input id="importCategory" value="未分类" maxlength="60"></label>
+    <label id="dropzone" class="dropzone">
+      <input id="importFile" type="file" accept=".html,.htm,.json,.txt,.md,.markdown" multiple class="sr-only">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m-4-4 4 4 4-4"/><path d="M5 15v4h14v-4"/></svg>
+      <strong>Choose a file</strong>
+      <span>or drop files here. MD, HTML, JSON or TXT; up to 200 files and 30 MB</span>
+    </label>
+    <div id="importStatus" class="import-result" role="status" aria-live="polite"></div>
+    <p class="field-hint">Add source text or notes to imported links so search can use them.</p>
+  </div>
+</dialog>
+
+<dialog id="connectorDialog" class="modal" aria-labelledby="connectorTitle">
+  <div class="dialog-inner">
+    <div class="dialog-head">
+      <h2 id="connectorTitle">Connect RedNote in Chrome</h2>
+      <button type="button" class="icon-button" data-close="connectorDialog" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <p class="dialog-lede">Install the connector once. After that, pasted RedNote links are read automatically. Use Folio and RedNote in the same Chrome browser.</p>
+    <ol class="flow">
+      <li><strong>Turn on Developer mode</strong><span>Open chrome://extensions and switch on Developer mode.</span></li>
+      <li><strong>Load the connector</strong><span>Click Load unpacked and choose the browser-extension folder in the Folio project.</span></li>
+      <li><strong>Sign in to RedNote</strong><span>Open xiaohongshu.com and sign in, then refresh Folio on port 5180 and paste a full share link.</span></li>
+    </ol>
+    <p class="dialog-lede">The connector returns only the note you ask for, to local Folio. Cookies are never read or exported. A background tab opens briefly during capture. For video notes only the cover is attempted.</p>
+    <p class="field-hint">The connector allows only local port 5180, so other previews show Not connected.</p>
+  </div>
+</dialog>
+
+<dialog id="info" class="modal" aria-labelledby="infoTitle">
+  <div class="dialog-inner">
+    <div class="dialog-head">
+      <h2 id="infoTitle">About the Folio agent</h2>
+      <button type="button" class="icon-button" data-close="info" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <ol class="flow">
+      <li><strong>Bring saves in</strong><span>Import RedNote Markdown, links, a Folio backup or an image pack. Your library stays in this browser.</span></li>
+      <li><strong>Organize with suggestions</strong><span>AI proposes topics with its reasons. Nothing moves until you accept.</span></li>
+      <li><strong>Use it in any task</strong><span>Describe your task. Folio searches saved text and your notes; it does not analyze images or video.</span></li>
+      <li><strong>Continue in your coding tool</strong><span>Select references and export a Markdown brief or JSON pack. The CLI reads that pack only; it does not connect to your live browser library.</span></li>
+    </ol>
+    <section class="about-rules" aria-labelledby="rulesTitle">
+      <h3 id="rulesTitle">Ground rules</h3>
+      <ul class="rules">
+        <li><strong>Cites sources</strong><span>AI drafts are suggestions. Open the references to check their source text and links before using them.</span></li>
+        <li><strong>Says when nothing fits</strong><span>If no saves match, Folio tells you and suggests a wider scope.</span></li>
+        <li><strong>Asks before guessing</strong><span>Add missing facts in the conversation and review any flagged borrowed text before export.</span></li>
+        <li><strong>Only what you saved</strong><span>Folio reads your saves and changes nothing on the original platforms. It never reads your network or copies AI chat history.</span></li>
+      </ul>
+    </section>
+  </div>
+</dialog>
+
+<dialog id="copyDialog" class="modal" aria-labelledby="copyTitle">
+  <div class="dialog-inner">
+    <div class="dialog-head">
+      <h2 id="copyTitle">Copy</h2>
+      <button type="button" class="icon-button" data-close="copyDialog" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <p id="copyLede" class="dialog-lede">The browser blocked automatic copying. The text is selected. Press Ctrl+C or ⌘C.</p>
+    <label class="sr-only" for="copyText">Text to copy</label>
+    <textarea id="copyText" class="copy-text" rows="12" readonly></textarea>
+  </div>
+</dialog>
+
+<dialog id="confirmDialog" class="modal confirm" aria-labelledby="confirmText">
+  <div class="dialog-inner">
+    <h2 id="confirmText"></h2>
+    <p id="confirmDetail" class="dialog-lede" hidden></p>
+    <div class="confirm-actions">
+      <button id="confirmCancel" type="button" class="ghost"></button>
+      <button id="confirmOk" type="button" class="primary"></button>
+    </div>
+  </div>
+</dialog>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden><span id="toastText"></span><button id="toastAction" type="button" hidden></button></div>
+
+<script type="module" src="/app.js"></script>
+</body>
+</html>
